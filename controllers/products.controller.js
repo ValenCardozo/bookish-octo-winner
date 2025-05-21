@@ -4,7 +4,7 @@ const filePath = path.join(__dirname, '../db/products.json');
 
 let products = [];
 try {
-  products = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  products = JSON.parse(fs.readFileSync(filePath, 'utf8')).products;
 } catch (err) {
   console.error('Error loading products database:', err);
   fs.writeFileSync(filePath, JSON.stringify([]), 'utf8');
@@ -12,7 +12,7 @@ try {
 }
 
 const getProducts = (req, res) => {
-    res.json({ data: products, status: 200, message: 'Products fetched successfully' });
+    res.json({ products: products, status: 200, message: 'Products fetched successfully' });
     console.log('Received request for products');
 };
 
@@ -34,6 +34,9 @@ const createProduct = (req, res) => {
   if (!newProduct.name || !newProduct.price) {
     return res.status(400).json({status: 400, message: 'Invalid product data'});
   }
+
+  const lastProduct = products[products.length - 1];
+  newProduct.id = lastProduct ? lastProduct.id + 1 : 1;
   products.push(newProduct);
   res.status(201).json({data: newProduct, status: 201, message: 'Product created successfully'});
   console.log('Received request to create product:', newProduct);

@@ -1,7 +1,7 @@
 {
     "products": [
-            { "id": 1, "name": "Product 1", "price": 10 },
-            { "id": 2, "name": "Product 2", "price": 20 },
-            { "id": 3, "name": "Product 3", "price": 30 }
+            { "id": 1, "name": "Espada corta", "price": 155.9 },
+            { "id": 2, "name": "Poción de magia", "price": 20 },
+            { "id": 3, "name": "Capa Elfica", "price": 1050 }
     ]
 }
