@@ -7,12 +7,12 @@ try {
   users = JSON.parse(fs.readFileSync(filePath, 'utf8')).users;
 } catch (err) {
   console.error('Error loading users database:', err);
-  fs.writeFileSync(filePath, JSON.stringify([]), 'utf8');
+  fs.writeFileSync(filePath, JSON.stringify({ users: [] }, null, 2), 'utf8');
   users = [];
 }
 
 const saveUsers = () => {
-  fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf8');
+  fs.writeFileSync(filePath, JSON.stringify({ users }, null, 2), 'utf8');
 };
 
 const generateUniqueId = () => {
