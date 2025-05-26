@@ -4,7 +4,7 @@ const filePath = path.join(__dirname, '../db/users.json');
 
 let users = [];
 try {
-  users = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  users = JSON.parse(fs.readFileSync(filePath, 'utf8')).users;
 } catch (err) {
   console.error('Error loading users database:', err);
   fs.writeFileSync(filePath, JSON.stringify([]), 'utf8');
@@ -22,7 +22,7 @@ const generateUniqueId = () => {
 };
 
 const getUsers = (req, res) => {
-    res.json({ data: users, status: 200, message: 'Users fetched successfully' });
+    res.json({ users: users, status: 200, message: 'Users fetched successfully' });
     console.log('Received request for users');
 };
 
