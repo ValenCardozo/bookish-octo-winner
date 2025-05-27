@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const filePath = path.join(__dirname, '../db/users.json');
 
+const db = require('../db/db.js'); // Assuming db.js is the database connection file
+
 let users = [];
 try {
   users = JSON.parse(fs.readFileSync(filePath, 'utf8')).users;
