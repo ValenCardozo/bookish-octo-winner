@@ -119,10 +119,32 @@ const deleteUser = (req, res) => {
   console.log(`Received request to delete user with id: ${userId}`);
 };
 
+const updateUserRole = (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { role } = req.body;
+
+  if (!role) {
+    return res.status(400).json({ status: 400, message: 'Role is required' });
+  }
+
+  const user = users.find(u => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({ status: 404, message: 'User not found' });
+  }
+
+  user.role = role;
+  saveUsers();
+
+  res.json({ status: 200, message: 'User role updated successfully', data: user });
+  console.log(`Updated role for user with id: ${userId}`);
+};
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  updateUserRole
 };
