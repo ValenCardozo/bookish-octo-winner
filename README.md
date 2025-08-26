@@ -35,12 +35,26 @@ La API estará disponible en `http://localhost:3003` por defecto.
 - `POST   /users`              → Crear un usuario
 - `PUT    /users/:id`          → Actualizar un usuario
 - `DELETE /users/:id`          → Eliminar un usuario
+- `PUT    /users/:id/role`     → Actualizar el rol de un usuario
+
+### Ventas
+- `GET    /sales`              → Listar todas las ventas
+
+### Autenticación
+- `POST   /auth/register`      → Registrar un nuevo usuario
+- `POST   /auth/login`         → Iniciar sesión
 
 ## Estructura del proyecto
 - `controllers/` — Lógica de negocio
 - `db/` — Archivos JSON de datos
 - `routes/` — Definición de rutas
 - `index.js` — Punto de entrada
+
+## Credenciales de prueba
+
+### Usuario Administrador
+- **Email:** admin@example.com
+- **Contraseña:** admin123
 
 ---
 ¡Listo para la aventura!

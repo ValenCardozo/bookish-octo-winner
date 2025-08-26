@@ -4,22 +4,29 @@
       "id": 1,
       "name": "Sir Espadín",
       "email": "espadin@aventura.com",
-      "age": 40
+      "age": 40,
+      "role": "admin"
     },
     {
       "id": 2,
       "name": "Maga Poción",
       "email": "magapocion@hechizos.com",
-      "age": 20
+      "age": 20,
+      "role": "user"
     },
     {
       "id": 3,
       "name": "Peladini Houdini",
       "email": "p.magic@stars.com",
       "age": "25",
-      "nombre": "",
-      "telefono": "",
-      "direccion": ""
+      "role": "admin"
+    },
+    {
+      "id": 4,
+      "name": "Sparkle Angel",
+      "email": "valencardozo7@gmail.com",
+      "age": "20",
+      "role": "user"
     }
   ]
 }

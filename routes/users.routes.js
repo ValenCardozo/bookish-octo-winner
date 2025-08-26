@@ -14,6 +14,6 @@ router.get('/:id', verifyToken, getUserById);
 router.post('/', verifyToken, isAdmin, createUser);
 router.put('/:id', verifyToken, isAdmin, updateUser);
 router.delete('/:id', verifyToken, isAdmin, deleteUser);
-router.patch('/:id/role', verifyToken, isAdmin, updateUserRole);
+router.put('/:id/role', verifyToken, isAdmin, updateUserRole);
 
 module.exports = router;

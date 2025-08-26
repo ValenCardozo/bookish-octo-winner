@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {users} = require('../models');
+
 const register = async (req, res) => {
   try {
     const { name, email, age, password } = req.body;
@@ -35,9 +36,9 @@ const login = async (req, res) => {
     console.log('llego?', req.body);
     try {
         const userExist = await users.findOne({ where: { email } })
-        console.log('userExist', userExist);
-        if (!userExist) return res.status(400).json({ message: 'Usuario no encontrado' })
 
+        if (!userExist) return res.status(400).json({ message: 'Usuario no encontrado' })
+        console.log(password, userExist.password);
         const validPassword = await bcrypt.compare(password, userExist.password)
         if (!validPassword) return res.status(403).json({ message: 'Contraseña incorrecta' })
 

@@ -43,7 +43,7 @@ const getUserById = (req, res) => {
 
 const createUser = (req, res) => {
   const newUser = req.body;
-
+  console.log(newUser);
   if (!newUser.name || !newUser.name.trim()) {
     return res.status(400).json({status: 400, message: 'Name is required'});
   }
@@ -122,6 +122,7 @@ const deleteUser = (req, res) => {
 const updateUserRole = (req, res) => {
   const userId = parseInt(req.params.id, 10);
   const { role } = req.body;
+  console.log(userId, role);
 
   if (!role) {
     return res.status(400).json({ status: 400, message: 'Role is required' });
