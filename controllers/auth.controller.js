@@ -85,7 +85,7 @@ const forgotPassword = async (req, res) => {
     const { email } = req.body
 
     try {
-        const user = await Usuario.findOne({ where: { email } })
+        const user = await users.findOne({ where: { email } })
         if (!user) return res.status(400).json({ message: 'El usuario no existe' })
 
         const rawToken = crypto.randomBytes(32).toString('hex')
@@ -95,7 +95,7 @@ const forgotPassword = async (req, res) => {
         resetTokens.set(user.id, { tokenHash, expiresAt })
 
         const resetUrl = `${process.env.FRONT_URL || 'http://localhost:5173'}/recuperar-contraseña?token=${rawToken}&id=${user.id}`
-
+        console.log(resetUrl);
         await sendEmail({
             to: user.email,
             subject: 'Recupera tu contraseña',
@@ -123,7 +123,7 @@ const resetPassword = async (req, res) => {
 
         if (tokenHash !== entry.tokenHash) return res.status(400).json({ message: 'Token invalido' })
 
-        const user = await Usuario.findByPk(id)
+        const user = await users.findByPk(id)
         if (!user) return res.status(400).json({ message: 'El usuario no existe' })
 
         user.password = await bcrypt.hash(password, 10)
